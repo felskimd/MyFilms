@@ -15,6 +15,7 @@ namespace MyFilms.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
