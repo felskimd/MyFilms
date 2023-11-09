@@ -50,20 +50,20 @@ namespace MyFilms.Models
 
     public class Release
     {
-        public Release(string? id, string? name, string? enName, string? description, string? type, string? posterLink,
-            string? previewPosterLink, string? movieLength, string? releaseYear, string[] genres, string[] actors)
+        public Release(string id, string name, string enName, string description, string type, string posterLink,
+            string previewPosterLink, string movieLength, string releaseYear, string[] genres, string[] actors)
         {
 
         }
 
-        public readonly string? Id;
-        public readonly string? Name;
-        public readonly string? Description;
-        public readonly string? Type;
-        public readonly string? PosterLink;
-        public readonly string? PreviewPosterLink;
-        public readonly string? MovieLength;
-        public readonly string? ReleaseYear;
+        public readonly string Id;
+        public readonly string Name;
+        public readonly string Description;
+        public readonly string Type;
+        public readonly string PosterLink;
+        public readonly string PreviewPosterLink;
+        public readonly string MovieLength;
+        public readonly string ReleaseYear;
         public readonly string[] Genres;
         public readonly string[] Actors;
     }
