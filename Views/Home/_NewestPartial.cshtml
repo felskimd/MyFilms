@@ -1,0 +1,15 @@
+﻿<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Newest">Новое</a>
+<div class="container">
+    <div class="row">
+        @foreach (var release in ViewData["Newest"] as List<ReleaseShort>)
+        {
+            <div class="col card">
+                <img src="@release.PreviewPosterLink" class="rounded mx-auto d-block img-fluid" />
+                <div>@release.Name</div>
+                <div>@release.Type</div>
+                <div>@release.KpRating</div>
+                <a class="link" href="/Release?Id=@release.Id">Перейти</a>
+            </div>
+        }
+    </div>
+</div>

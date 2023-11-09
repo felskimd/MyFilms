@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyFilms.Models;
+using MyFilms.Services;
 using System.Diagnostics;
 
 namespace MyFilms.Controllers
@@ -15,14 +16,13 @@ namespace MyFilms.Controllers
 
         public IActionResult Index()
         {
-            
+            var popular = KinopoiskAPIService.GetPopularReleases();
+            var newest = KinopoiskAPIService.GetNewestReleases();
+            popular.Wait();
+            newest.Wait();
+            ViewData["Popular"] = popular.Result;
+            ViewData["Newest"] = newest.Result;
             return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            KinopoiskAPIService.GetPopularReleases().Wait();
-            return KinopoiskAPIService.GetPopularReleases().Result;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

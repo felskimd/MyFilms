@@ -1,16 +1,16 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace MyFilms.Models
 {
-    public class APITicketProvider
+    public static class APITicketProvider
     {
-        private readonly IConfiguration configuration;
-
-        public APITicketProvider(IConfiguration configuration)
-        {
-            this.configuration = configuration;
+        public static string GetTicket() 
+        { 
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+            return config.GetSection("APITicket").Value;
         }
-
-        public string GetTicket() => configuration["APITicket"];
     }
 }
