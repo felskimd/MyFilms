@@ -21,7 +21,8 @@ namespace MyFilms.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            KinopoiskAPIService.GetPopularReleases().Wait();
+            return KinopoiskAPIService.GetPopularReleases().Result;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
