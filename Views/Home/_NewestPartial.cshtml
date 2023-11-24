@@ -1,4 +1,5 @@
-﻿<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Newest">Новое</a>
+﻿@using MyFilms.Models.APIModels;
+<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Newest">Новое</a>
 <div class="container">
     <div class="row">
         @foreach (var release in ViewData["Newest"] as List<ReleaseShort>)

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Net.Http.Headers;
 using System.Text.Json;
 using MyFilms.Models;
+using MyFilms.Models.APIModels;
+using MyFilms.Models.DbModels;
 
 namespace MyFilms.Services
 {
