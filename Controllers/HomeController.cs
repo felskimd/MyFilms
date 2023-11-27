@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyFilms.Models;
 using MyFilms.Services;
 using System.Diagnostics;
@@ -8,10 +9,12 @@ namespace MyFilms.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        ApplicationContext db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationContext db)
         {
             _logger = logger;
+            this.db = db;
         }
 
         public IActionResult Index()
@@ -22,6 +25,7 @@ namespace MyFilms.Controllers
             newest.Wait();
             ViewData["Popular"] = popular.Result;
             ViewData["Newest"] = newest.Result;
+            ViewData["Authenticated"] = HttpContext.User.Identity.IsAuthenticated;
             return View();
         }
 

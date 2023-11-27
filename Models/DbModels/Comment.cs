@@ -2,15 +2,15 @@
 {
     public class Comment
     {
-        public readonly int Id;
-        public readonly int AuthorId;
-        public readonly int ReleaseId;
-        public readonly string Text;
-        public readonly decimal Mark;
-        public readonly int Rating;
-        public readonly int UpVotes;
-        public readonly int DownVotes;
-        public readonly DateTime PublishingDate;
+        public int Id { get; set; }
+        public int AuthorId { get; set; }
+        public int ReleaseId { get; set; }
+        public string Text { get; set; }
+        public decimal Mark { get; set; }
+        public int Rating { get; set; }
+        public int UpVotes { get; set; }
+        public int DownVotes { get; set; }
+        public DateTime PublishingDate { get; set; }
 
         public void Publish()
         {

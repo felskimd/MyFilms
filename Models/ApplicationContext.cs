@@ -12,6 +12,7 @@ namespace MyFilms.Models
             : base(options)
         {
             Database.EnsureCreated();
+
         }
     }
 }

@@ -2,10 +2,11 @@
 {
     public class User
     {
-        public readonly int Id;
-        public readonly string Name;
-        public readonly string Email;
-        public readonly string PasswordHash;
-        public readonly bool IsStaff;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string PasswordHash { get; set; }
+        public bool IsStaff { get; set; }
+        //May be add role
     }
 }
