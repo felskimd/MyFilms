@@ -21,6 +21,7 @@ namespace MyFilms.Controllers
             return View();
         }
 
+        //REMOVE
         [HttpGet]
         public string GetReleaseById(string id)
         {

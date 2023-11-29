@@ -1,0 +1,15 @@
+﻿@Html.ValidationSummary()
+<form method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+    <div class="mb-3">
+        <label for="emailLogin" class="form-label">Электронная почта или логин</label>
+        <input type="text" class="form-control" name="emailLogin" />
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Пароль</label>
+        <input type="password" class="form-control" name="password" />
+    </div>
+    
+    <button class="btn btn-primary" type="submit">Войти</button>
+</form>
