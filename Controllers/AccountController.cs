@@ -30,7 +30,7 @@ namespace MyFilms.Controllers
             var form = HttpContext.Request.Form;
 
             string username = form["emailLogin"];
-            string password = form["password"];
+            int password = form["password"].GetHashCode();
 
             User? user = db.Users.FirstOrDefault(p => (p.UserName == username || p.Email == username) && p.PasswordHash == password);
             if (user is null) return BadRequest("Пользователь не найден");
@@ -48,17 +48,21 @@ namespace MyFilms.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(string? returnUrl)
+        public async Task<IActionResult> Register(string? returnUrl)
         {
+            //Добавить проверку email
             var form = HttpContext.Request.Form;
-            if (db.Users.Any((u) => u.UserName == form["name"] || u.Email == form["email"]))
-                return BadRequest("Пользователь уже существует");
             var newUser = new User();
-            newUser.UserName = form["name"];
+            newUser.UserName = form["login"];
             newUser.Email = form["email"];
-            newUser.PasswordHash = form["password"];
+            newUser.PasswordHash = form["password"].GetHashCode();
+            if (db.Users.Any((u) => u.UserName == newUser.UserName || u.Email == newUser.Email))
+                return BadRequest("Пользователь уже существует");
             db.Users.Add(newUser);
             db.SaveChanges();
+            var claims = new List<Claim> { new Claim(ClaimTypes.Name, newUser.UserName) };
+            ClaimsIdentity identity = new ClaimsIdentity(claims, "Cookies");
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
             return Redirect(returnUrl??"/");
         }
 

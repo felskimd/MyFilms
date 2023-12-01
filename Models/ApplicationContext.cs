@@ -14,5 +14,10 @@ namespace MyFilms.Models
             Database.EnsureDeleted();
             Database.EnsureCreated();
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().HasData(new User { Id = 1, UserName = "hhh", Email = "hhh", PasswordHash = "hhh".GetHashCode(), IsStaff = false });
+        }
     }
 }
