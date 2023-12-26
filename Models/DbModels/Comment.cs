@@ -11,10 +11,5 @@
         public int UpVotes { get; set; }
         public int DownVotes { get; set; }
         public DateTime PublishingDate { get; set; }
-
-        public void Publish()
-        {
-
-        }
     }
 }

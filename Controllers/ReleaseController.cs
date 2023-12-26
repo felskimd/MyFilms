@@ -17,17 +17,10 @@ namespace MyFilms.Controllers
         [Authorize]
         public IActionResult Index(string id)
         {
-            ViewData["Id"] = id;
+            var release = KinopoiskAPIService.GetReleaseById(id);
+            release.Wait();
+            ViewData["Release"] = release.Result;
             return View();
-        }
-
-        //REMOVE
-        [HttpGet]
-        public string GetReleaseById(string id)
-        {
-            var result = KinopoiskAPIService.GetReleaseById(id);
-            result.Wait();
-            return result.Result;
         }
     }
 }

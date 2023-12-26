@@ -1,0 +1,23 @@
+﻿@using MyFilms.Models.APIModels;
+<div class="container">
+    <div class="row">
+        @foreach (var release in ViewData["Result"] as List<ReleaseShort>)
+        {
+            <div class="card">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="@release.PreviewPosterLink" class="rounded mx-auto d-block img-fluid"/>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@release.Name</h5>
+                            <p class="card-text">@release.Type</p>
+                            <p class="card-text">@release.KpRating</p>
+                            <a class="link" href="/Release?Id=@release.Id">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

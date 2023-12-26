@@ -25,22 +25,37 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
                         </li>
-                        @* <li class="nav-item">
-                            <a class="nav-link" asp-controller="Account" asp-action="Login">Войти</a>
-                        </li> *@
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Моя страница</a>
+                            </li>
+                        }
                     </ul>
+                    <form asp-controller="Search" asp-action="Index" class="navbar-nav">
+                        <input type="search" class="form-control" name="searchString"/>
+                        <button type="submit" class="btn">Найти</button>
+                    </form>
                     @if (User.Identity.IsAuthenticated)
                     {
                         <ul class="navbar-nav pull-right">
-                            <li class="nav-link">@Html.ActionLink("Выход", "Logout", "Account")</li>
-                            <li class="nav-link">@Html.ActionLink(User.Identity.Name, "", "")</li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Выход</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">@User.Identity.Name</a>
+                            </li>
                         </ul>
                     }
                     else
                     {
                         <ul class="navbar-nav pull-right">
-                            <li class="nav-link">@Html.ActionLink("Регистрация", "Register", "Account")</li>
-                            <li class="nav-link">@Html.ActionLink("Вход", "Login", "Account")</li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Регистрация</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Вход</a>
+                            </li>
                         </ul>
                     }
                 </div>
