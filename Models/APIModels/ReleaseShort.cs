@@ -2,7 +2,7 @@
 {
     public class ReleaseShort
     {
-        public ReleaseShort(string? id, string? name, string? previewPosterLink, string? kpRating, string? type)
+        public ReleaseShort(string? id, string? name, string? previewPosterLink, string? kpRating, string? type, string? year)
         {
             Id = id;
             Name = name;
@@ -26,6 +26,7 @@
                     Type = "мультсериал";
                     break;
             }
+            Year = year;
         }
 
         public readonly string? Id;
@@ -33,5 +34,6 @@
         public readonly string? PreviewPosterLink;
         public readonly string? KpRating;
         public readonly string? Type;
+        public readonly string? Year;
     }
 }

@@ -5,11 +5,11 @@
         @foreach(var release in ViewData["Popular"] as List<ReleaseShort>)
         {
             <div class="col card">
-                <img src="@release.PreviewPosterLink" class="rounded mx-auto d-block img-fluid"/>
-                <div>@release.Name</div>
+                <img src="@release.PreviewPosterLink" class="rounded mx-auto d-block img-fluid" />
+                <a class="link-dark h4" href="/Release?Id=@release.Id">@release.Name</a>
+                <div>@release.Year</div>
                 <div>@release.Type</div>
-                <div>@release.KpRating</div>
-                <a class="link" href="/Release?Id=@release.Id">Перейти</a>
+                <div>Рейтинг КП: @release.KpRating</div>
             </div>
         }
     </div>

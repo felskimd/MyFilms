@@ -5,15 +5,15 @@
         {
             <div class="card">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="@release.PreviewPosterLink" class="rounded mx-auto d-block img-fluid"/>
+                    <div class="col">
+                        <img src="@release.PreviewPosterLink" @* style="width: 100px;" *@ class="rounded d-block img-fluid mx-auto align-baseline" />
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                         <div class="card-body">
-                            <h5 class="card-title">@release.Name</h5>
-                            <p class="card-text">@release.Type</p>
-                            <p class="card-text">@release.KpRating</p>
-                            <a class="link" href="/Release?Id=@release.Id">Перейти</a>
+                            <a class="link-dark h4" href="/Release?Id=@release.Id">@release.Name</a>
+                            <div>@release.Year</div>
+                            <div>@release.Type</div>
+                            <div>Рейтинг КП: @release.KpRating</div>
                         </div>
                     </div>
                 </div>

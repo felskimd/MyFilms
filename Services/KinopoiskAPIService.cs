@@ -10,10 +10,12 @@ namespace MyFilms.Services
     public static class KinopoiskAPIService
     {
         private static readonly HttpClient _httpClient;
-        private const string PopularShortRequest = $"/v1.3/movie?selectFields=id%20name%20rating.kp%20poster.previewUrl%20typeNumber&sortField=votes.kp&sortType=-1&limit=5&poster.previewUrl=!null&name=!null";
-        private const string NewestShortRequest = $"/v1.3/movie?selectFields=id%20name%20rating.kp%20poster.previewUrl%20typeNumber&sortField=premiere.russia&sortType=-1&limit=5&poster.previewUrl=!null&name=!null";
+        //private const string PopularShortRequest = $"/v1.3/movie?selectFields=id%20name%20rating.kp%20poster.previewUrl%20typeNumber%20year&sortField=votes.kp&sortType=-1&limit=5&poster.previewUrl=!null&name=!null";
+        //private const string NewestShortRequest = $"/v1.3/movie?selectFields=id%20name%20rating.kp%20poster.previewUrl%20typeNumber%20year&sortField=premiere.russia&sortType=-1&limit=5&poster.previewUrl=!null&name=!null";
         private const string NewestShortRequestNew = $"/v1.4/movie/search?page=1&limit=10";
-        private const string NewestShortRequestNew2 = $"/v1.4/movie?page=1&limit=5&selectFields=id&selectFields=name&selectFields=rating.kp&selectFields=poster.previewUrl&selectFields=typeNumber&sortField=premiere.russia&sortType=-1&notNullFields=name&notNullFields=rating.kp&notNullFields=poster.url";
+        private const string NewestShortRequest = $"/v1.4/movie?page=1&limit=5&selectFields=year&selectFields=id&selectFields=name&selectFields=poster&selectFields=rating&selectFields=typeNumber&notNullFields=poster.url&notNullFields=rating.kp&notNullFields=name&sortField=premiere.world&sortType=-1&year=1874-2050";
+        private const string PopularShortRequest = $"/v1.4/movie?page=1&limit=5&selectFields=year&selectFields=id&selectFields=name&selectFields=poster&selectFields=rating&selectFields=typeNumber&notNullFields=poster.url&notNullFields=rating.kp&notNullFields=name&sortField=rating.kp&sortType=-1&year=1874-2050";
+
         private const string RequestById = $"/v1.4/movie/";
         private const string SearchRequest = $"/v1.4/movie/search?limit=20&query=";
 
@@ -35,7 +37,8 @@ namespace MyFilms.Services
                 doc.GetProperty("name").ToString(),
                 doc.GetProperty("poster").GetProperty("previewUrl").ToString(),
                 doc.GetProperty("rating").GetProperty("kp").ToString(),
-                doc.GetProperty("typeNumber").ToString());
+                doc.GetProperty("typeNumber").ToString(),
+                doc.GetProperty("year").ToString());
             return release;
         }
 
@@ -77,7 +80,8 @@ namespace MyFilms.Services
                     doc.GetProperty("name").ToString(),
                     doc.GetProperty("poster").GetProperty("previewUrl").ToString(),
                     doc.GetProperty("rating").GetProperty("kp").ToString(),
-                    doc.GetProperty("typeNumber").ToString()));
+                    doc.GetProperty("typeNumber").ToString(),
+                    doc.GetProperty("year").ToString()));
             }
             return releases;
         }
@@ -95,7 +99,8 @@ namespace MyFilms.Services
                     doc.GetProperty("name").ToString(),
                     doc.GetProperty("poster").GetProperty("previewUrl").ToString(),
                     doc.GetProperty("rating").GetProperty("kp").ToString(),
-                    doc.GetProperty("typeNumber").ToString()));
+                    doc.GetProperty("typeNumber").ToString(),
+                    doc.GetProperty("year").ToString()));
             }
             return releases;
         }
