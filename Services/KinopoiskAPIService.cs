@@ -10,10 +10,8 @@ namespace MyFilms.Services
     public static class KinopoiskAPIService
     {
         private static readonly HttpClient _httpClient;
-        private const string NewestShortRequestNew = $"/v1.4/movie/search?page=1&limit=10";
         private const string NewestShortRequest = $"/v1.4/movie?page=1&limit=5&selectFields=year&selectFields=id&selectFields=name&selectFields=poster&selectFields=rating&selectFields=typeNumber&notNullFields=poster.url&notNullFields=rating.kp&notNullFields=name&sortField=premiere.world&sortType=-1&year=1874-2050";
         private const string PopularShortRequest = $"/v1.4/movie?page=1&limit=5&selectFields=year&selectFields=id&selectFields=name&selectFields=poster&selectFields=rating&selectFields=typeNumber&notNullFields=poster.url&notNullFields=rating.kp&notNullFields=name&sortField=rating.kp&sortType=-1&year=1874-2050";
-
         private const string RequestById = $"/v1.4/movie/";
         private const string SearchRequest = $"/v1.4/movie/search?limit=20&query=";
 
