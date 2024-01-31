@@ -27,6 +27,7 @@
                     break;
             }
             Year = year;
+            //запрос в бд для получения дополнительных данных
         }
 
         public readonly string? Id;
