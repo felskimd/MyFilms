@@ -57,6 +57,7 @@ namespace MyFilms.Controllers
             newUser.Email = form["email"];
             newUser.PasswordHash = form["password"].GetHashCode();
             if (db.Users.Any((u) => u.UserName == newUser.UserName || u.Email == newUser.Email))
+                //конкретизировать ошибки 
                 return BadRequest("Пользователь уже существует");
             db.Users.Add(newUser);
             db.SaveChanges();

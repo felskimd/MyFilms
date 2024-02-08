@@ -20,7 +20,7 @@ namespace MyFilms.Controllers
             var result = KinopoiskAPIService.Search(searchString);
             result.Wait();
             ViewData["Result"] = result.Result;
-            ViewData["Authenticated"] = HttpContext.User.Identity.IsAuthenticated;
+            //ViewData["Authenticated"] = HttpContext.User.Identity.IsAuthenticated;
             return View();
         }
     }
