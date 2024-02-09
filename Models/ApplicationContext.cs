@@ -8,7 +8,7 @@ namespace MyFilms.Models
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Vote> Votes { get; set; }
-        //public DbSet<Release> Releases { get; set; }
+        public DbSet<Release> Releases { get; set; }
         public DbSet<Mark> Marks { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)

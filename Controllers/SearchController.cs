@@ -19,6 +19,7 @@ namespace MyFilms.Controllers
             var searchString = form["searchString"];
             var result = KinopoiskAPIService.Search(searchString);
             result.Wait();
+            ViewData["SearchString"] = searchString;
             ViewData["Result"] = result.Result;
             //ViewData["Authenticated"] = HttpContext.User.Identity.IsAuthenticated;
             return View();

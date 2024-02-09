@@ -1,15 +1,19 @@
 ﻿@using MyFilms.Models.APIModels;
-<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Popular">Популярное</a>
-<div class="container">
-    <div class="row">
+<a class="link-dark h4 py-4" asp-area="" asp-controller="Home" asp-action="Popular">Популярное</a>
+<div class="container py-4">
+    <div class="card-group">
         @foreach(var release in ViewData["Popular"] as List<ReleaseShort>)
         {
-            <div class="col card">
-                <img src="@release.PreviewPosterLink" class="rounded mx-auto d-block img-fluid" />
-                <a class="link-dark h4" href="/Release?Id=@release.Id">@release.Name</a>
-                <div>@release.Year</div>
-                <div>@release.Type</div>
-                <div>Рейтинг КП: @release.KpRating</div>
+            <div class="card">
+                <img src="@release.PreviewPosterLink" class="rounded mx-auto d-block card-img-top" />
+                <div class="card-header">
+                    <a class="link-dark stretched-link h4" href="/Release?Id=@release.Id">@release.Name</a>
+                </div>
+                <div class="card-body">
+                    <div>@release.Year</div>
+                    <div>@release.Type</div>
+                    <div>Рейтинг КП: @release.KpRating</div>
+                </div>
             </div>
         }
     </div>
