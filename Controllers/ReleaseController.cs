@@ -22,7 +22,7 @@ namespace MyFilms.Controllers
             var release = KinopoiskAPIService.GetReleaseById(id);
             release.Wait();
             ViewData["Release"] = release.Result;
-            var userComment = db.Comments.Where(x => x.AuthorId == db.Users.Where(y => y.UserName == HttpContext.User.Identity.Name).First().Id && x.ReleaseId == int.Parse(id)).ToList();
+            var userComment = db.Comments.Where(x => x.Author == HttpContext.User.Identity.Name && x.ReleaseId == int.Parse(id)).ToList();
             var comments = db.Comments.Where(x => x.ReleaseId == convertedId).ToList();
             comments.Except(userComment).OrderBy(x => x.DownVotes - x.UpVotes).ToList();
             ViewData["UserComment"] = userComment.FirstOrDefault();
